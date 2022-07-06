@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[buy]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="content">
+  <div style="margin:5px auto;overflow: hidden;"></div>
+  <div id="primary" class="content-area">
+    <article class="post">
+      <div class="art-desc">
+        <h3 class="art-t"><i class="iconfont icon-microsoft"></i>{$=vv_inavigation(ii_get_lrstr($GLOBALS['ngenre'], '/', 'left'), 'classid=-1;strers=module;strurl=' . ii_get_lrstr($GLOBALS['ngenre'], '/', 'left'))}{$=NAV_SP_STR}{$=ii_itake('module.buy', 'lng')}</h3>
+        <div style="min-height:150px;margin:20px">
+          <div class="user_list_con">
+            <div class="user_list_con_content">
+              <table width="100%" cellspacing="0" cellpadding="10" border="0">
+                <tr>
+                  <td width="100%" height="25" class="tbtop" colspan="6">
+                    <span class="tag">
+                      <i class="iconfont icon-tagmultiple"></i>
+                      <a href="./?type=list">{$=ii_itake('manage.list','lng')}</a>
+                      <a href="./?type=add">{$=ii_itake('manage.add','lng')}</a>
+                    </span>
+                  </td>
+                </tr>
+              </table>
+              <form method="post" name="sel_form" action="{$=#nuri}?action=order">
+                <table width="100%" cellspacing="0" cellpadding="10" border="0">
+                  <tr><td>{$=ii_itake('module.uname', 'lng')}</td><td>{$username}</td>
+                  </tr>
+                  <tr><td>{$=ii_itake('module.money', 'lng')}</td><td>{$=ii_show_xmlinfo_select('sel_money.all', '1', 'money:radio')}</td>
+                  </tr>
+                  <tr>
+                    <td valign="top" height="25">{$=ii_itake('global.user:config.payment','lng')}</td>
+                    <td>{$=ii_show_xmlinfo_select('global.user:sel_payment.all|{$pay_type}', '{$payment}', 'payment:radio_img')}</td>
+                  </tr>
+                  <tr><td></td><td>{$=ii_itake('module.buy_tips', 'lng')}</td>
+                  </tr>
+                  <tr><td></td><td><input type="submit" value="{$=ii_itake('global.lng_config.submit','lng')}" class="button"></td>
+                  </tr>
+                </table>
+              </form>
+              <div style="margin:5px auto;overflow: hidden;"></div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </article>
+  </div>
+  <div id="sidebar" class="widget-area">
+    <aside id="categories-4" class="widget widget_categories">
+      <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>{$=ii_itake('global.user:member.topic', 'lng')}</h3>
+      {$=ap_user_data_member_side()}
+      <div class="clear"></div>
+    </aside>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[order]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div id="content">
+  <div style="margin:5px auto;overflow: hidden;"></div>
+  <div id="primary" class="content-area">
+    <article class="post">
+      <div class="art-desc">
+        <h3 class="art-t"><i class="iconfont icon-microsoft"></i>{$=vv_inavigation(ii_get_lrstr($GLOBALS['ngenre'], '/', 'left'), 'classid=-1;strers=module;strurl=' . ii_get_lrstr($GLOBALS['ngenre'], '/', 'left'))}{$=NAV_SP_STR}{$=ii_itake('module.order', 'lng')}</h3>
+        <div style="min-height:150px;margin:20px">
+          <div class="user_list_con">
+            <div class="user_list_con_content">
+              <table width="100%" cellspacing="0" cellpadding="10" border="0">
+                <tr>
+                  <td width="100%" height="25" class="tbtop" colspan="6">
+                    <span class="tag">
+                      <i class="iconfont icon-tagmultiple"></i>
+                      <a href="./?type=list">{$=ii_itake('manage.list','lng')}</a>
+                      <a href="./?type=add">{$=ii_itake('manage.add','lng')}</a>
+                    </span>
+                  </td>
+                </tr>
+              </table>
+              <form method="post" name="sel_form" action="{$=#nurlpre}/user/?type=pay&backurl={$=urlencode($GLOBALS['nurl'])}">
+                <input type="hidden" name="price" value="{$price}">
+                <input type="hidden" name="orderid" value="{$orderid}">
+                <input type="hidden" name="id" value="{$id}">
+                <table width="100%" cellspacing="0" cellpadding="10" border="0">
+                  <tr><td>{$=ii_itake('module.uname', 'lng')}</td><td>{$username}</td>
+                  </tr>
+                  <tr><td>{$=ii_itake('module.money', 'lng')}</td><td>{$price}</td>
+                  </tr>
+                  <tr>
+                    <td valign="top" style="vertical-align: top;">{$=ii_itake('global.user:config.payment','lng')}</td>
+                    <td>{$=ii_show_xmlinfo_select('global.user:sel_payment.all|{$pay_type}', '{$payment}', 'payment:radio_img')}</td>
+                  </tr>
+                  <tr><td></td><td>{$=ii_itake('module.buy_tips', 'lng')}</td>
+                  </tr>
+                  <tr><td></td><td><input type="submit" value="{$=ii_itake('global.user:config.paynow','lng')}" class="button"></td>
+                  </tr>
+                </table>
+              </form>
+              <div style="margin:5px auto;overflow: hidden;"></div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </article>
+  </div>
+  <div id="sidebar" class="widget-area">
+    <aside id="categories-4" class="widget widget_categories">
+      <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>{$=ii_itake('global.user:member.topic', 'lng')}</h3>
+      {$=ap_user_data_member_side()}
+      <div class="clear"></div>
+    </aside>
+  </div>
+  <div class="clear"></div>
+</div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    
+    
+  </item_list>
+</xml>

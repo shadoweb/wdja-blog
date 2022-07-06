@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation('{$genre}', '')}{$=NAV_SP_STR}{$topic}</div>
+            <script type="text/javascript"> 
+              function reset() 
+              { 
+                var e=document.getElementById("post-{$id}"); 
+                var con=e.innerHTML; 
+                con = con.replace(/[ \t]*height[ \t]*=[ \t]*("[^"]+")|('[^']+')/ig,""); 
+                con = con.replace(/[ \t]*height[ \t]*=[ \t]*[^ \t]+/ig,"");
+                con = con.replace(/<img[^>]*>/gi, function (match,capture) {
+                  return match.replace(/style\s*?=\s*?(['"])[\s\S]*?\1/ig,'style="max-width:90%;height:auto;margin:0 auto;text-align:center;"');
+                });
+                e.innerHTML=con; 
+              }
+              //window.onload = reset;
+            </script>
+            <article id="post-{$id}" class="post post-type-normal" style="opacity: 1; display: block; transform: translateY(0px);">
+              <header class="post-header">
+                <h1 class="post-title">{$=ii_itake('global.aboutus/contactus:module.topic','lng')}</h1>
+              </header>
+              <div class="post-body">
+                {$=mm_encode_content(mm_cutepage_content($GLOBALS['RS_content']))}
+                <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], 0)}</div>
+              </div>
+            </article>
+            <div class="clear"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>
