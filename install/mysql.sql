@@ -10,8 +10,8 @@ CREATE TABLE `wdja_aboutus` (
   `ab_image` varchar(255) DEFAULT NULL,
   `ab_content` text,
   `ab_content_atts_list` text,
-  `ab_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `ab_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `ab_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `ab_update` datetime DEFAULT '2021-08-01 08:00:00',
   `ab_ucode` varchar(50) DEFAULT NULL,
   `ab_hidden` int DEFAULT '0',
   `ab_good` int DEFAULT '0',
@@ -28,7 +28,7 @@ CREATE TABLE `wdja_admin` (
   `a_pword` varchar(50) DEFAULT NULL,
   `a_popedom` text,
   `a_lock` int DEFAULT '0',
-  `a_lasttime` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `a_lasttime` datetime DEFAULT '2021-08-01 08:00:00',
   `a_lastip` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`aid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -36,7 +36,7 @@ CREATE TABLE `wdja_admin` (
 CREATE TABLE `wdja_admin_log` (
   `lid` int NOT NULL AUTO_INCREMENT,
   `l_name` varchar(50) DEFAULT NULL,
-  `l_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `l_time` datetime DEFAULT '2021-08-01 08:00:00',
   `l_ip` varchar(50) DEFAULT NULL,
   `l_islogin` int DEFAULT '0',
   PRIMARY KEY (`lid`)
@@ -51,13 +51,13 @@ CREATE TABLE `wdja_article` (
   `a_image` varchar(255) DEFAULT NULL,
   `a_content` text,
   `a_content_atts_list` text,
-  `a_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `a_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `a_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `a_update` datetime DEFAULT '2021-08-01 08:00:00',
   `a_cls` text,
   `a_class` int DEFAULT '0',
-  `a_class_list` varchar(50) NOT NULL DEFAULT '0',
+  `a_class_list` varchar(50) DEFAULT '0',
   `a_ucode` varchar(50) DEFAULT NULL,
-  `a_utid` varchar(50) NOT NULL DEFAULT '0',
+  `a_utid` varchar(50) DEFAULT '0',
   `a_vuser` int DEFAULT '0',
   `a_vuid` int DEFAULT '0',
   `a_hidden` int DEFAULT '0',
@@ -73,14 +73,14 @@ CREATE TABLE `wdja_pages` (
   `p_titles` varchar(250) DEFAULT NULL,
   `p_keywords` varchar(252) DEFAULT NULL,
   `p_description` varchar(252) DEFAULT NULL,
-  `p_fid` varchar(50) NOT NULL DEFAULT '0',
+  `p_fid` varchar(50) DEFAULT '0',
   `p_fsid` int DEFAULT '0',
   `p_type` int DEFAULT '0',
   `p_image` varchar(255) DEFAULT NULL,
   `p_content` text,
   `p_content_atts_list` text,
-  `p_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `p_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `p_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `p_update` datetime DEFAULT '2021-08-01 08:00:00',
   `p_ucode` varchar(50) DEFAULT NULL,
   `p_hidden` int DEFAULT '0',
   `p_good` int DEFAULT '0',
@@ -102,9 +102,9 @@ CREATE TABLE `wdja_check` (
   `c_address` varchar(255) DEFAULT NULL,
   `c_title` varchar(252) DEFAULT NULL,
   `c_content` text,
-  `c_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `c_time` datetime DEFAULT '2021-08-01 08:00:00',
   `c_reply` text,
-  `c_replytime` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `c_replytime` datetime DEFAULT '2021-08-01 08:00:00',
   `c_hidden` int DEFAULT '0',
   `c_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`cid`),
@@ -121,8 +121,8 @@ CREATE TABLE `wdja_expansion_baidupush` (
   `b_count` int DEFAULT '0',
   `b_type` varchar(25) DEFAULT '0',
   `b_state` varchar(25) DEFAULT '0',
-  `b_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `b_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `b_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `b_update` datetime DEFAULT '2021-08-01 08:00:00',
   `b_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`bid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -134,7 +134,7 @@ CREATE TABLE `wdja_expansion_baidupush_data` (
   `bd_type` varchar(25) DEFAULT '0',
   `bd_state` varchar(25) DEFAULT '0',
   `bd_content` text,
-  `bd_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `bd_time` datetime DEFAULT '2021-08-01 08:00:00',
   `bd_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`bdid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -149,8 +149,8 @@ CREATE TABLE `wdja_expansion_fields` (
   `f_hidden` int DEFAULT '0',
   `f_hidden_list` int DEFAULT '0',
   `f_hidden_detail` int DEFAULT '0',
-  `f_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `f_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `f_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `f_update` datetime DEFAULT '2021-08-01 08:00:00',
   `f_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`fid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -168,8 +168,8 @@ CREATE TABLE `wdja_expansion_fields_gid` (
   `fg_fid` int DEFAULT '0',
   `fg_gid` varchar(50) DEFAULT NULL,
   `fg_data` text,
-  `fg_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `fg_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `fg_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `fg_update` datetime DEFAULT '2021-08-01 08:00:00',
   PRIMARY KEY (`fgid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -182,8 +182,8 @@ CREATE TABLE `wdja_expansion_iplock` (
   `ip_content` text,
   `ip_lock` int DEFAULT '0',
   `ip_out` int DEFAULT '0',
-  `ip_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `ip_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `ip_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `ip_update` datetime DEFAULT '2021-08-01 08:00:00',
   `ip_count` int DEFAULT '0',
   `ip_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ipid`)
@@ -196,9 +196,9 @@ CREATE TABLE `wdja_expansion_label` (
   `el_images_tpl` varchar(50) DEFAULT NULL,
   `el_content` text,
   `el_content_atts_list` text,
-  `el_inputs_type` varchar(50) NOT NULL DEFAULT 'text',
-  `el_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `el_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `el_inputs_type` varchar(50) DEFAULT 'text',
+  `el_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `el_update` datetime DEFAULT '2021-08-01 08:00:00',
   `el_hidden` int DEFAULT '0',
   `el_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`elid`)
@@ -211,10 +211,10 @@ CREATE TABLE `wdja_expansion_timer` (
   `et_gid` int DEFAULT '0' COMMENT '内容ID',
   `et_event` int DEFAULT '0' COMMENT '定时事件:发布,删除,上下架',
   `et_timer_switch` int DEFAULT '0' COMMENT '定时开关',
-  `et_timer` datetime NOT NULL DEFAULT '2021-08-01 08:00:00' COMMENT '任务启动时间',
+  `et_timer` datetime DEFAULT '2021-08-01 08:00:00' COMMENT '任务启动时间',
   `et_state` int DEFAULT '0' COMMENT '任务状态:中止,暂停,进行中,结束',
-  `et_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `et_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `et_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `et_update` datetime DEFAULT '2021-08-01 08:00:00',
   `et_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`etid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -222,8 +222,8 @@ CREATE TABLE `wdja_expansion_timer` (
 CREATE TABLE `wdja_expansion_vuser` (
   `evid` int NOT NULL AUTO_INCREMENT,
   `ev_topic` varchar(50) DEFAULT NULL,
-  `ev_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `ev_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `ev_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `ev_update` datetime DEFAULT '2021-08-01 08:00:00',
   `ev_count` int DEFAULT '0',
   `ev_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`evid`)
@@ -239,9 +239,9 @@ CREATE TABLE `wdja_message` (
   `m_address` varchar(255) DEFAULT NULL,
   `m_title` varchar(252) DEFAULT NULL,
   `m_content` text,
-  `m_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `m_time` datetime DEFAULT '2021-08-01 08:00:00',
   `m_reply` text,
-  `m_replytime` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `m_replytime` datetime DEFAULT '2021-08-01 08:00:00',
   `m_hidden` int DEFAULT '0',
   `m_token` varchar(255) NOT NULL,
   `m_lng` varchar(50) DEFAULT NULL,
@@ -260,13 +260,13 @@ CREATE TABLE `wdja_music` (
   `m_file` varchar(255) DEFAULT NULL,
   `m_content` text,
   `m_content_atts_list` text,
-  `m_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `m_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `m_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `m_update` datetime DEFAULT '2021-08-01 08:00:00',
   `m_cls` text,
   `m_class` int DEFAULT '0',
-  `m_class_list` varchar(50) NOT NULL DEFAULT '0',
+  `m_class_list` varchar(50) DEFAULT '0',
   `m_ucode` varchar(50) DEFAULT NULL,
-  `m_utid` varchar(50) NOT NULL DEFAULT '0',
+  `m_utid` varchar(50) DEFAULT '0',
   `m_vuser` int DEFAULT '0',
   `m_vuid` int DEFAULT '0',
   `m_hidden` int DEFAULT '0',
@@ -289,8 +289,8 @@ CREATE TABLE `wdja_note` (
   `n_image` varchar(255) DEFAULT NULL,
   `n_content` text,
   `n_content_atts_list` text,
-  `n_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `n_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `n_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `n_update` datetime DEFAULT '2021-08-01 08:00:00',
   `n_ucode` varchar(50) DEFAULT NULL,
   `n_hidden` int DEFAULT '0',
   `n_good` int DEFAULT '0',
@@ -313,16 +313,16 @@ CREATE TABLE `wdja_picture` (
   `p_infos` text,
   `p_content` text,
   `p_content_atts_list` text,
-  `p_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `p_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `p_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `p_update` datetime DEFAULT '2021-08-01 08:00:00',
   `p_cls` text,
   `p_class` int DEFAULT '0',
-  `p_class_list` varchar(50) NOT NULL DEFAULT '0',
+  `p_class_list` varchar(50) DEFAULT '0',
   `p_ucode` varchar(50) DEFAULT NULL,
   `p_hidden` int DEFAULT '0',
   `p_good` int DEFAULT '0',
   `p_count` int DEFAULT '0',
-  `p_lng` varchar(50) NOT NULL DEFAULT 'chinese',
+  `p_lng` varchar(50) DEFAULT 'chinese',
   PRIMARY KEY (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -333,8 +333,8 @@ CREATE TABLE `wdja_search` (
   `s_content` varchar(252) DEFAULT NULL,
   `s_infos` text,
   `s_hidden` int DEFAULT '1',
-  `s_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `s_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `s_update` datetime DEFAULT '2021-08-01 08:00:00',
+  `s_time` datetime DEFAULT '2021-08-01 08:00:00',
   `s_count` int DEFAULT '0',
   `s_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sid`)
@@ -349,9 +349,9 @@ CREATE TABLE `wdja_support_collect` (
   `c_content` varchar(255) DEFAULT NULL,
   `c_replace` varchar(255) DEFAULT NULL,
   `c_hidden` int DEFAULT '0',
-  `c_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `c_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `c_lng` varchar(50) NOT NULL DEFAULT 'chinese',
+  `c_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `c_update` datetime DEFAULT '2021-08-01 08:00:00',
+  `c_lng` varchar(50) DEFAULT 'chinese',
   PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -366,8 +366,8 @@ CREATE TABLE `wdja_support_dict` (
   `d_group` varchar(50) DEFAULT NULL,
   `d_hidden` int DEFAULT '0',
   `d_order` int DEFAULT '0',
-  `d_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `d_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `d_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `d_update` datetime DEFAULT '2021-08-01 08:00:00',
   `d_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`did`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -379,9 +379,9 @@ CREATE TABLE `wdja_support_linktext` (
   `l_keyword` varchar(50) DEFAULT NULL,
   `l_intro` varchar(255) DEFAULT NULL,
   `l_hidden` int DEFAULT '0',
-  `l_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `l_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `l_lng` varchar(50) NOT NULL DEFAULT 'chinese',
+  `l_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `l_update` datetime DEFAULT '2021-08-01 08:00:00',
+  `l_lng` varchar(50) DEFAULT 'chinese',
   PRIMARY KEY (`lid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -399,8 +399,8 @@ CREATE TABLE `wdja_support_menu` (
   `m_hidden` int DEFAULT '0',
   `m_gourl` varchar(255) DEFAULT NULL,
   `m_order` int DEFAULT '0',
-  `m_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `m_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `m_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `m_update` datetime DEFAULT '2021-08-01 08:00:00',
   `m_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`mid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -413,8 +413,8 @@ CREATE TABLE `wdja_support_slide` (
   `s_intro` varchar(255) DEFAULT NULL,
   `s_order` int DEFAULT '0',
   `s_hidden` int DEFAULT '0',
-  `s_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `s_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `s_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `s_update` datetime DEFAULT '2021-08-01 08:00:00',
   `s_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -436,8 +436,8 @@ CREATE TABLE `wdja_support_sort` (
   `sort_tpl_list` varchar(50) DEFAULT NULL,
   `sort_tpl_detail` varchar(50) DEFAULT NULL,
   `sort_order` int DEFAULT '0',
-  `sort_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `sort_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `sort_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `sort_update` datetime DEFAULT '2021-08-01 08:00:00',
   `sort_lng` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`sortid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -448,8 +448,8 @@ CREATE TABLE `wdja_sys_note` (
   `n_image` varchar(255) DEFAULT NULL,
   `n_content` text,
   `n_content_atts_list` text,
-  `n_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `n_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `n_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `n_update` datetime DEFAULT '2021-08-01 08:00:00',
   `n_finish` int DEFAULT '0',
   `n_count` int DEFAULT '0',
   `n_lng` varchar(50) DEFAULT 'chinese',
@@ -476,7 +476,7 @@ CREATE TABLE `wdja_sys_upload` (
   `up_filename` varchar(255) DEFAULT NULL,
   `up_field` varchar(50) DEFAULT NULL,
   `up_fid` int DEFAULT '0',
-  `up_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `up_time` datetime DEFAULT '2021-08-01 08:00:00',
   `up_user` varchar(50) DEFAULT NULL,
   `up_valid` int DEFAULT '0',
   `up_voidreason` int DEFAULT '0',
@@ -493,8 +493,8 @@ CREATE TABLE `wdja_tags` (
   `t_image` varchar(255) DEFAULT NULL,
   `t_content` text,
   `t_content_atts_list` text,
-  `t_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `t_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `t_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `t_update` datetime DEFAULT '2021-08-01 08:00:00',
   `t_hidden` int DEFAULT '0',
   `t_good` int DEFAULT '0',
   `t_gourl` varchar(255) DEFAULT NULL,
@@ -528,7 +528,7 @@ CREATE TABLE `wdja_user` (
   `u_qq` varchar(50) DEFAULT NULL,
   `u_phone` varchar(50) DEFAULT NULL,
   `u_address` varchar(255) DEFAULT NULL,
-  `u_money` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '余额字段,不能为负数',
+  `u_money` decimal(10,2) unsigned DEFAULT '0.00' COMMENT '余额字段,不能为负数',
   `u_emoney` int DEFAULT '0',
   `u_integral` int DEFAULT '0',
   `u_topic` int DEFAULT '0',
@@ -537,9 +537,9 @@ CREATE TABLE `wdja_user` (
   `u_forum_admin` int DEFAULT '0',
   `u_utype` int DEFAULT '0',
   `u_lock` int DEFAULT '0',
-  `u_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `u_lasttime` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `u_pretime` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
+  `u_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `u_lasttime` datetime DEFAULT '2021-08-01 08:00:00',
+  `u_pretime` datetime DEFAULT '2021-08-01 08:00:00',
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -555,9 +555,9 @@ CREATE TABLE `wdja_user_recharge` (
   `ur_timestamp` varchar(50) DEFAULT NULL,
   `ur_state` int DEFAULT '0',
   `ur_lock` int DEFAULT '0',
-  `ur_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `ur_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `ur_lng` varchar(50) NOT NULL DEFAULT 'chinese',
+  `ur_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `ur_update` datetime DEFAULT '2021-08-01 08:00:00',
+  `ur_lng` varchar(50) DEFAULT 'chinese',
   PRIMARY KEY (`urid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -572,9 +572,9 @@ CREATE TABLE `wdja_user_vip` (
   `uv_payment` int DEFAULT NULL,
   `uv_payid` varchar(50) DEFAULT NULL,
   `uv_state` int DEFAULT '0',
-  `uv_time` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `uv_update` datetime NOT NULL DEFAULT '2021-08-01 08:00:00',
-  `uv_lng` varchar(50) NOT NULL DEFAULT 'chinese',
+  `uv_time` datetime DEFAULT '2021-08-01 08:00:00',
+  `uv_update` datetime DEFAULT '2021-08-01 08:00:00',
+  `uv_lng` varchar(50) DEFAULT 'chinese',
   PRIMARY KEY (`uvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
