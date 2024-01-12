@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdjafgf" author="wdja">
+  <configure>
+    <item varstr="ntitles" strvalue="后台管理" />
+    <item varstr="morder" strvalue="support,expansion,user,aboutus,article,picture,pages,music,note,tags,message,check" />
+    <item varstr="norder" strvalue="cache,note,files,xml,configure,upload,user,userlog" />
+  </configure>
+</xml>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>disinfo,chinese</field>
+    <base>language_list</base>
+  </configure>
+  <language_list>
+    <item>
+      <disinfo><![CDATA[channel_title]]></disinfo>
+      <chinese><![CDATA[在线歌曲]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[good]]></disinfo>
+      <chinese><![CDATA[推荐]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[listtopic]]></disinfo>
+      <chinese><![CDATA[歌曲列表]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[addmusic]]></disinfo>
+      <chinese><![CDATA[添加到播放列表]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[loadinglrc]]></disinfo>
+      <chinese><![CDATA[正在加载歌词]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[loadlrcfail]]></disinfo>
+      <chinese><![CDATA[加载歌词失败]]></chinese>
+    </item>
+    <item>
+      <disinfo><![CDATA[nolrctxt]]></disinfo>
+      <chinese><![CDATA[没有上传歌词]]></chinese>
+    </item>
+  </language_list>
+</xml>

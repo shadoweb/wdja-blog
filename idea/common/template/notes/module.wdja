@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[add]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+{$=mm_echo_error()}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('config.sign','lng')}</div>
+            <div class="post-title">
+              <h2>
+                <span><a href="./?type=add">{$=ii_itake('config.sign','lng')}</a></span>
+                <span><a href="./?type=list">{$=ii_itake('config.view','lng')}</a></span>
+              </h2>
+            </div>
+            <main id="main" role="main">
+              <div id="comments" class="comments-area">
+                <div id="respond" class="comment-respond">
+                  <div id="comment-author-info">
+                    <form method="post" action="{$=#nuri}?action=add&token={$=mm_get_token()}" onSubmit="return Validator.Validate(this, 2)">
+                      <input type="hidden" name="token" value="{$=mm_get_token()}" />
+                      <input type="hidden" name="hidden" value="0" />
+                      <table width="100%" cellspacing="0" cellpadding="10" border="0" class="nocolor">
+                        <tbody>
+                          <tr>
+                            <td width="45" height="25" align="right">{$=ii_itake('config.title', 'lng')}</td>
+                            <td width="*"><input type="text" size="20" name="title" value="{$=ii_htmlencode($_POST['title'], 1)}" style="width:100%;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td width="45" height="25" align="right" valign="top" style="vertical-align: top;">{$=ii_itake('config.content', 'lng')}</td>
+                            <td width="*"><textarea id="comment" rows="8" name="content" dtype="Limit" min="1" max="1000" dmsg="{$=ii_itake('validator.content', 'lng')}" style="width:100%;" class="textarea">{$=ii_htmlencode($_POST['content'], 1)}</textarea></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" style="text-align:center;"><input id="submit" name="submit" type="submit" tabindex="5" value="{$=ii_itake('global.lng_config.submit','lng')}" /></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+
+              </div>
+            </main>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('config.view','lng')}</div>
+            <div class="post-title">
+              <h2>
+     			    <span><a href="./?type=add">{$=ii_itake('config.sign','lng')}</a></span>
+    			    <span><a href="./?type=list">{$=ii_itake('config.view','lng')}</a></span>
+              </h2>
+            </div>
+            {$=mm_get_advert('list')}
+            <main id="main" role="main">
+              <div id="comments" class="comments-area">
+                <ul class="comment-list">
+                  {@recurrence_ida}
+                  <li class="comment">
+                    <div class="comment-body">
+                      <div class="comment-author vcard"> 
+                        <span class="comment-meta commentmetadata">{$time}</span>
+                      </div>
+                        <strong> {$title} </strong>
+                      <p>{$=ii_creplace(ii_encode_article(ii_htmlencode($GLOBALS['RS_content'])))}</p>
+                    </div>
+                  </li>
+                  {@recurrence_ida}
+                </ul>
+
+                <nav class="navigation">
+                  <div class="nav-links" id="cutepage">
+                    {$cpagestr}
+                  </div>
+                </nav>
+
+                <div class="clear"></div>
+              </div>
+
+            </main>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+    
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+{$=mm_echo_error()}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}</div>
+            <div class="post-title">
+              <h2>
+                <span><a href="{$=#nurlpre}/{$genre}/?type=add">{$=ii_itake('global.idea:config.sign','lng')}</a></span>
+                <span><a href="{$=#nurlpre}/{$genre}/?type=list">{$=ii_itake('global.idea:config.view','lng')}</a></span>
+              </h2>
+            </div>
+            <main id="main" role="main">
+              <div id="comments" class="comments-area">
+                <div id="respond" class="comment-respond">
+                  <div id="comment-author-info">
+                    <form method="post" action="{$=#nurlpre}/{$genre}/?action=add&token={$=mm_get_token()}" onSubmit="return Validator.Validate(this, 2)">
+                      <input type="hidden" name="token" value="{$=mm_get_token()}" />
+                      <input type="hidden" name="hidden" value="0" />
+                      <table width="100%" cellspacing="0" cellpadding="10" border="0" class="nocolor">
+                        <tbody>
+                          <tr>
+                            <td width="45" height="25" align="right">{$=ii_itake('global.idea:config.title', 'lng')}</td>
+                            <td><input type="text" size="20" name="title" value="{$=ii_htmlencode($_POST['title'], 1)}" style="width:100%;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td width="45" height="25" align="right" valign="top" style="vertical-align: top;">{$=ii_itake('global.idea:config.content', 'lng')}</td>
+                            <td><textarea id="comment" rows="8" name="content" dtype="Limit" min="1" max="1000" dmsg="{$=ii_itake('global.idea:validator.content', 'lng')}" style="width:100%;" class="textarea">{$=ii_htmlencode($_POST['content'], 1)}</textarea></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" style="text-align:center;"><input id="submit" name="submit" type="submit" tabindex="5" value="{$=ii_itake('global.lng_config.submit','lng')}" /></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+
+              </div>
+            </main>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

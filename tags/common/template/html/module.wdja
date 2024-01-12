@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="breadcrumb">{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</div>
+
+<div id="primary" class="content-area">
+  <div id="page">
+   <main id="main" class="site-main" role="main">
+     
+    <div class="tagcloud"> 
+    {@recurrence_ida}
+      <a style="width:auto;" href="{$url}" >{$topic}{$sum}</a>
+    {@recurrence_ida}
+        <div class="clear"></div>
+    </div>
+     
+  <nav class="navigation pagination">
+   <div class="nav-links">
+    {$cpagestr}
+   </div>
+  </nav>
+     
+   </main>
+  </div>
+</div>
+<div id="sidebar" class="widget-area">
+{$=ii_ireplace('global.module.sidebar','tpl')}
+</div>
+   <div class="clear"></div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="breadcrumb">{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</div>
+<div id="primary" class="single-area">
+  <div id="page">
+    <div class="catepory-title">
+      <div class="entry-header">
+        <h1>{$=ii_itake('global.tags:manage.tags','lng')}：《{$topic}》</h1>
+      </div>
+    </div>
+    <main id="main" class="site-main" role="main">
+      {@recurrence_ida}
+      <article>
+        <div class="art-desc">
+          <h3 class="art-t"> <a href="{$url}"><i class="iconfont icon-viewdashboard"></i>{$topic}</a></h3>
+          <div class="more">
+            {$module}
+          </div>
+          <div class="clear"></div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </article>
+      {@recurrence_ida}
+      <nav class="navigation pagination">
+        <div class="nav-links">
+          {$cpagestr}
+        </div>
+      </nav>
+    </main>
+  </div>
+</div>
+<div id="sidebar" class="widget-area">
+  {$=ii_ireplace('global.module.sidebar','tpl')}
+</div>
+<div class="clear"></div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    
+    <item>
+      <name><![CDATA[detail_nodata]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="breadcrumb">{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</div>
+<div id="primary" class="single-area">
+  <div id="page">
+   <div class="catepory-title">
+    <div class="entry-header">
+     <h1>{$=ii_itake('global.tags:manage.tags','lng')}：《{$topic}》</h1>
+    </div>
+   </div>
+   <main id="main" class="site-main" role="main">
+
+   <div class="entry-content">
+    <div class="single-content">
+     {$=mm_get_advert('detail')}
+     {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+    </div>
+    <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+    <div class="clear"></div>
+   </div>
+      {$=api_tags_genre_list('article')}
+      {$=api_tags_genre_list('picture')}
+   </main>
+  </div>
+</div>
+<div id="sidebar" class="widget-area">
+{$=ii_ireplace('global.module.sidebar','tpl')}
+</div>
+   <div class="clear"></div>
+
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[api_tags_list]]></name>
+      <tpl_default><![CDATA[
+                     <a style="width:auto;" href="{$turl}" title="{$tag}">{$tag}</a>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[api_tags_all]]></name>
+      <tpl_default><![CDATA[
+                     <a style="width:auto;" href="{$turl}" title="{$tag}">{$tag}</a>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[api_tags_genre_list]]></name>
+      <tpl_default><![CDATA[
+  <aside class="widget new_post">
+   <h3 class="widget-title" style="background: #f8f8f8;height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i>{$=ii_itake('global.{$genre}:module.channel_title', 'lng')}</h3>
+   <div class="post_cat">
+    <ul>
+       {@}<li class="cat-title" style="float:left;width:50%;"><i class="iconfont icon-chevronright"></i><a href="{$=#nurlpre}/{$genre}/{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}">{$topic}</a></li>{@}
+    </ul>
+    <div class="clear"></div>
+   </div>
+   <div class="clear"></div>
+  </aside>
+      ]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

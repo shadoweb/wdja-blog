@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta http-equiv="Content-Type" content="text/html; charset={$=CHARSET}" />
+    {$=mm_web_base()}
+    <link href="{$=#nurlpre}/{$=ii_get_actual_route('support/global/')}{$=ii_itake('global.support/global:basic.web_icon','lng')}" rel="shortcut icon" type="image/x-icon">
+    <title>{$=mm_web_title($GLOBALS['ntitle'])}</title>
+    <meta name="keywords" content="{$=mm_web_keywords($GLOBALS['nkeywords'])}" />
+    <meta name="description" content="{$=mm_web_description($GLOBALS['ndescription'])}" />
+    {$=ii_itake('global.support/themes/'.$GLOBALS['nskin'].':basic.head-code','lng')}
+    <script>
+        var deviceWidth = document.documentElement.clientWidth;
+        if(deviceWidth > 720) deviceWidth = 720;
+        document.documentElement.style.fontSize = deviceWidth/7.2 + 'px';
+    </script>
+    <style type="text/css">
+        *{
+            margin: 0 ;
+            padding: 0;
+            list-style: none;
+        }
+        .clear:after{
+            display: block;
+            clear: both;
+            content: " ";
+        }
+        html{
+            font-size: 100px;
+        }
+        a{
+            text-decoration: none;
+        }
+        .box{
+            width: 7.2rem;
+            margin: 1rem auto;
+        }
+        @media (max-width: 721px) {
+        }
+        table{
+            table-layout: fixed;
+            word-break: break-all; 
+            word-wrap: break-word; 
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table .caption{
+            padding: 10px;
+            font-size: 0.32rem;
+            background: #dbe0e3;
+        }
+        table thead td,
+        table thead td:first-child,table tr td:first-child{
+            padding: 0.08rem;
+            background: #dbe0e3;
+        }
+        table tr{
+            font-size: 0.16rem;
+            text-align: center;
+        }
+        table td{
+            border: 1px solid #c5c7c6;
+        }
+        table tr td p,
+        table tr td span{
+            margin: 0.08rem;
+            font-size: 0.08rem;
+            color: #FFFFFF;
+            padding: 3px 5px;
+        }
+        .color{
+            font-weight:bold;
+            color: #000;
+        }
+        .color_0{
+            background: #38aedc;
+        }
+        .color_1{
+            background: #e9729c;
+        }
+        .color_2{
+            background: #91bf38;
+        }
+        .color_3{
+            background: #f8b73f;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+        <table>
+          <thead>
+            <tr><td colspan="5" class="caption">{$=ii_itake('global.timetable:module.channel_title','lng')}</td></tr>
+          <tr>
+            <td></td>
+            <td>{$=ii_itake('global.timetable:sel_day.0','lng')}</td>
+            <td>{$=ii_itake('global.timetable:sel_day.1','lng')}</td>
+            <td>{$=ii_itake('global.timetable:sel_day.2','lng')}</td>
+            <td>{$=ii_itake('global.timetable:sel_day.3','lng')}</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.0','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=0;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=0;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=0;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=0;day=3')}</td>
+          </tr>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.1','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=1;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=1;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=1;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=1;day=3')}</td>
+          </tr>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.2','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=2;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=2;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=2;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=2;day=3')}</td>
+          </tr>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.3','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=3;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=3;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=3;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=3;day=3')}</td>
+          </tr>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.4','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=4;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=4;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=4;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=4;day=3')}</td>
+          </tr>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.5','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=5;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=5;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=5;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=5;day=3')}</td>
+          </tr>
+          <tr>
+            <td>{$=ii_itake('global.timetable:sel_week.6','lng')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=6;day=0')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=6;day=1')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=6;day=2')}</td>
+            <td>{$=vv_itransfer('timetable', 'global.timetable:module.tdlist', 'topx=5;tnum=30;genre=timetable;week=6;day=3')}</td>
+          </tr>
+          </tbody>
+            <tfoot><tr><td colspan="5"><span class="color">{$=ii_itake('global.timetable:manage.type','lng')} : </span><span class="color_0">{$=ii_itake('global.timetable:sel_type.0','lng')}</span><span class="color_1">{$=ii_itake('global.timetable:sel_type.1','lng')}</span><span class="color_2">{$=ii_itake('global.timetable:sel_type.2','lng')}</span><span class="color_3">{$=ii_itake('global.timetable:sel_type.3','lng')}</span></td></tr></tfoot>
+        </table>
+<div class="clear"></div>
+</div>
+</body>
+</html>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[tdlist]]></name>
+      <tpl_default><![CDATA[{@}<p class="color_{$type}">{$topic}({$start_time}-{$end_time})</p>{@}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

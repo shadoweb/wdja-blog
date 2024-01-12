@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="breadcrumb">{$=vv_inavigation('{$genre}', 'classid={$classid};strers=module;strurl={$genre}')}</div>
+<div id="primary" class="content-area">
+  <div id="page">
+    <div class="catepory-title">
+      <div class="entry-header">
+        <h1>{$=ii_itake('global.lng_config.sort','lng')}：《{$=mm_get_sorttext('{$genre}','{$nlng}','{$classid}')}》</h1>
+      </div>
+    </div>
+    <main id="main" class="site-main" role="main">
+      {$=mm_get_advert('list')}
+      <article>
+        {@recurrence_ida}
+        <div class="pic-main">
+          <div class="pic-img">
+            <a href="{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}" title="{$topic}"><img src="{$simage}" alt="{$topic}" /></a>
+          </div>
+          <div class="pic-t"> <a href="{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}" title="{$topic}" title="{$topic}">{$topic}</a></div>
+        </div>
+        {@recurrence_ida}
+          <div class="clear"></div>
+      </article>
+      <nav class="navigation pagination">
+        <div class="nav-links">
+          {$cpagestr}
+        </div>
+      </nav>
+    </main>
+  </div>
+</div>
+<div id="sidebar" class="widget-area">
+  {$=ii_ireplace('global.module.sidebar','tpl')}
+</div>
+<div class="clear"></div>
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="breadcrumb">{$=vv_inavigation('{$genre}', 'classid={$class};strers=module;strurl={$genre}')}</div>
+<div id="primary" class="single-area">
+  <article class="page">
+    <header class="entry-header">
+      <div class="single-meta"> <span><i class="iconfont icon-calendartext"></i>&nbsp;{$=ii_format_date('{$time}',1)}</span></div>
+      <div class="clear"></div>
+      <h1 class="entry-title">{$topic}</h1>
+    </header>
+    <div class="entry-content">
+      <div class="single-content">
+        {$=mm_get_advert('detail')}
+        <div>
+          <ul id="images" class="gallery">
+            {$=mm_get_gallery('{$gallery}')}
+          </ul>
+          <script>
+            const gallery = new Viewer(document.getElementById('images'));
+          </script>
+        </div>
+        {@recurrence_ida}
+        <div class="tag"><i class="iconfont icon-viewlist"></i>&nbsp;{$infos_topic}:{$infos_link}</div>
+        {@recurrence_ida}
+        {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+        <div class="tag"><i class="iconfont icon-tagmultiple"></i>&nbsp;{$=api_tags_list({$id})}</div>
+      </div>
+      <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+      <div class="clear"></div>
+    </div>
+  </article>
+  {$=mm_view_pop_lists('article','{$id}')}
+  {$=vv_itransfer('new', 'global.picture:module.detail_list_class', 'topx=10;tnum=30;genre=picture;osql= and #_class=\'{$class}\'')}
+  {$=vv_itransfer('new', 'global.picture:module.detail_list_more', 'topx=10;tnum=30;genre=picture;')}
+  <div class="clear"></div>
+  <nav class="nav-single"> 
+    {$=vv_itransfer('up', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+    {$=vv_itransfer('down', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+    <div class="clear"></div>
+  </nav>
+  <div class="clear"></div>
+</div>
+<div id="sidebar" class="widget-area">
+  {$=ii_ireplace('global.module.sidebar','tpl')}
+</div>
+<div class="clear"></div>
+
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail_list_class]]></name>
+      <tpl_default><![CDATA[  <aside class="widget new_post" style="width:48%;float:left;">
+   <h3 class="widget-title" style="background: #f8f8f8;height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i>相关图片</h3>
+   <div class="post_cat">
+    <ul>
+       {@}<li class="cat-title"><i class="iconfont icon-chevronright"></i><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, $GLOBALS['nurltype']))}">{$topic}</a></li>{@}
+    </ul>
+    <div class="clear"></div>
+   </div>
+   <div class="clear"></div>
+  </aside>
+      ]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail_list_more]]></name>
+      <tpl_default><![CDATA[  <aside class="widget new_post" style="width:48%;float:right;">
+   <h3 class="widget-title" style="background: #f8f8f8;height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i>更多图片</h3>
+   <div class="post_cat">
+    <ul>
+       {@}<li class="cat-title"><i class="iconfont icon-chevronright"></i><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, $GLOBALS['nurltype']))}">{$topic}</a></li>{@}
+    </ul>
+    <div class="clear"></div>
+   </div>
+   <div class="clear"></div>
+  </aside>
+      ]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[nodetail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="breadcrumb">{$=vv_inavigation('{$genre}', 'classid={$class};strers=module;strurl={$genre}')}</div>
+<div id="primary" class="single-area">
+  <article class="page">
+    <header class="entry-header">
+      <div class="single-meta"> <span><i class="iconfont icon-calendartext"></i>&nbsp;{$=ii_format_date('{$time}',1)}</span></div>
+      <div class="clear"></div>
+      <h1 class="entry-title">{$topic}</h1>
+    </header>
+    <div class="entry-content">
+      <div class="single-content">
+        {$=mm_get_advert('detail')}
+    <div>
+      <ul id="images" class="gallery">
+        {$=mm_get_gallery('{$gallery}')}
+      </ul>
+      <script>
+        const gallery = new Viewer(document.getElementById('images'));
+      </script>
+    </div>
+        <p>nodetail</p>
+        <div class="tag"><i class="iconfont icon-tagmultiple"></i>&nbsp;{$=api_tags_list({$id})}</div>
+      </div>
+      <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+      <div class="clear"></div>
+    </div>
+  </article>
+  {$=vv_itransfer('new', 'global.picture:module.detail_list_class', 'topx=10;tnum=30;genre=picture;osql= and #_class=\'{$class}\'')}
+  {$=vv_itransfer('new', 'global.picture:module.detail_list_more', 'topx=10;tnum=30;genre=picture;')}
+  <div class="clear"></div>
+  <nav class="nav-single"> 
+    {$=vv_itransfer('up', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+    {$=vv_itransfer('down', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+    <div class="clear"></div>
+  </nav>
+  <div class="clear"></div>
+</div>
+<div id="sidebar" class="widget-area">
+  {$=ii_ireplace('global.module.sidebar','tpl')}
+</div>
+<div class="clear"></div>
+
+{$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

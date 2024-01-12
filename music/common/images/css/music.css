@@ -1,0 +1,99 @@
+::selection {
+    background: green;
+    color: #fff;
+    text-shadow: none;
+}
+.wrapper {
+    text-align: center;
+    width: 100%;
+    margin: 10px auto;
+    overflow:hidden;
+    border-bottom:5px solid #eee;
+}
+#wrap-left{
+    width:45%;
+    float:left;
+}
+#wrap-left h3#wrap-topic{
+    padding:3px 5px;
+    margin:0;
+    background:#eee;
+    font-weight:bold;
+    text-align:center;
+    border-bottom:0px;
+}
+#wrap-right{
+    width:100%;
+    float:right;
+}
+#musiclist{
+    padding:0;
+    margin:0;
+    max-height:360px;
+}
+#musiclist li{
+    list-style:none;
+    text-align:left;
+    margin:0;
+    padding:3px 5px;
+    border-bottom:1px solid #eee;
+}
+#musiclist li a{
+    max-width:80%;
+    float:left;
+    display:block;
+    text-decoration:none;
+    border-bottom:0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#musiclist li span{
+    float:right;
+    min-width: 18px;
+    min-height: 18px;
+}
+@media (max-width: 767px){
+    #wrap-left{
+        width:100%;
+    }
+    #wrap-right{
+        width:100%;
+        margin-top:20px;
+    }
+}
+#lyricWrapper {
+    height: 315px;
+    line-height:1;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0;
+    color: #fff;
+}
+
+#lyricContainer {
+    position: relative;
+    top: 130px;
+    text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000; 
+}
+
+/*the highlight color of the current lyric line*/
+.current-line-0 {
+    color: #FAFA17;
+}
+.current-line-1 {
+    color: #ff1493;
+}
+.current-line-2 {
+    color: #adff2f;
+}
+.current-line-3 {
+    color: #c617e8;
+}
+.current-song, .current-song a {
+    color: #A6E22D;
+}
+
+audio::-webkit-media-controls {
+    overflow: hidden !important
+}

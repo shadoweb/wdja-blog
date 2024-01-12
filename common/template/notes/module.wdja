@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation('article', '')}</div>
+            {$=mm_get_advert('index')}
+            {$=wdja_cms_blog_list('article')}
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[links]]></name>
+      <tpl_default><![CDATA[      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="feed-link motion-element">
+          <a><i class="fa fa-cube"></i>{$=ii_itake('global.support/linktext:manage.channel_title', 'lng')}</a>
+        </div>
+        <div class="links-of-author motion-element">
+          {$=vv_itransfer('new', 'link', 'topx=20;tnum=30;genre=support/linktext')}
+        </div>
+      </section>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list-article]]></name>
+      <tpl_default><![CDATA[{@recurrence_ida}
+<article class="post post-type-normal" style="opacity: 1; display: block; transform: translateY(0px);">
+  <header class="post-header">
+    <h1 class="post-title">
+      <a class="post-title-link" href="{$=ii_get_actual_route('article')}/{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}">
+        {$topic}
+      </a>
+    </h1>
+    <div class="post-meta">
+      <span class="post-time">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar-o"></i>
+        </span>
+        <span class="post-meta-item-text">发表于</span>
+        <time >
+          {$=ii_format_date('{$time}',1)}
+        </time>
+      </span>
+      <span class="post-category">
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-item-icon">
+          <i class="fa fa-folder-o"></i>
+        </span>
+        <span class="post-meta-item-text">分类于</span>
+        <span>
+          <a href="{$=ii_get_actual_route('article')}/{$=ii_iurl('list', {$class}, $GLOBALS['nurltype'])}" rel="index">
+            <span>{$classname}</span>
+          </a>
+        </span>
+      </span>
+      <span id="{$=ii_get_actual_route('article')}/{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}" class="leancloud_visitors" data-flag-title="{$topic}">
+        <span class="post-meta-divider">|</span>
+        <span class="post-meta-item-icon">
+          <i class="fa fa-eye"></i>
+        </span>
+        <span class="post-meta-item-text"> {$=ii_itake('global.lng_config.count','lng')}</span>
+        <span class="leancloud-visitors-count">{$count}</span>
+      </span>
+    </div>
+  </header>
+  <div class="post-body">
+    <p>{$desc}</p>
+    <!--noindex-->
+    <div class="post-button text-center">
+      <a class="btn" href="{$=ii_get_actual_route('article')}/{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}" rel="contents" id="flash">
+        阅读全文 »
+      </a>
+    </div>
+    <!--/noindex-->
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  <footer class="post-footer">
+    <div class="post-eof"></div>
+  </footer>
+</article>
+{@recurrence_ida}
+<nav class="navigation pagination">
+  <div class="nav-links">
+    {$cpagestr}
+  </div>
+</nav>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar]]></name>
+      <tpl_default><![CDATA[<header id="header" class="header">
+  <div class="header-inner">
+    <div class="site-brand-wrapper">
+      <div class="site-meta">
+        <div class="custom-logo-site-title">
+          <a href="/" class="brand" rel="start" style="opacity: 1;">
+            <span class="logo-line-before"><i></i></span>
+            <span class="site-title" style="opacity: 1; top: 0px;">{$=ii_itake('global.support/global:basic.web_name','lng')}</span>
+            <span class="logo-line-after"><i></i></span>
+          </a>
+        </div>
+        <p class="site-subtitle" style="opacity: 1; top: 0px;">{$=ii_itake('global.support/themes/'.$GLOBALS['nskin'].':basic.web_slogan','lng')}</p>
+      </div>
+      <div class="site-nav-toggle">
+        <button>
+          <span class="btn-bar"></span>
+          <span class="btn-bar"></span>
+          <span class="btn-bar"></span>
+        </button>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <ul id="menu" class="menu">
+        {$=vv_itransfer('order', 'menu', 'topx=12;tnum=30;genre=support/menu;osql= and #_group=\'0\' and #_fsid=\'0\'')}
+      </ul>
+      <div class="site-search">
+        <div class="algolia-popup popup search-popup">
+          <div class="algolia-search">
+            <div class="algolia-search-input-icon">
+              <i class="fa fa-search"></i>
+            </div>
+            <div class="algolia-search-input" id="algolia-search-input"><div class="ais-search-box"><input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索" role="textbox" spellcheck="false" type="text" value="" class="ais-search-box--input"></div></div>
+          </div>
+          <div class="algolia-results">
+            <div id="algolia-stats"></div>
+            <div id="algolia-hits"></div>
+            <div id="algolia-pagination" class="algolia-pagination"></div>
+          </div>
+          <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-inner">
+      {$=ii_ireplace('global.module.sidebar-new','tpl')}
+      {$=ii_ireplace('global.module.sidebar-hot','tpl')}
+      {$=ii_ireplace('global.module.sidebar-search','tpl')}
+    </div>
+    <div class="sidebar-inner">
+      {$=ii_ireplace('global.module.links','tpl')}
+    </div>
+     {$=mm_get_advert('sidebar')}
+  </div>
+</header>
+<script type="text/javascript">
+$(document).ready(function () {
+  $(document).trigger('bootstrap:before');
+  $('.site-nav-toggle button').on('click', function () {
+    var $siteNav = $('.site-nav');
+    var ON_CLASS_NAME = 'site-nav-on';
+    var isSiteNavOn = $siteNav.hasClass(ON_CLASS_NAME);
+    var animateAction = isSiteNavOn ? 'slideUp' : 'slideDown';
+    var animateCallback = isSiteNavOn ? 'removeClass' : 'addClass';
+    $siteNav.stop()[animateAction]('fast', function () {
+      $siteNav[animateCallback](ON_CLASS_NAME);
+    });
+  });
+  $(document).trigger('bootstrap:after');
+});
+</script>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[content-list]]></name>
+      <tpl_default><![CDATA[
+  <aside class="widget new_post">
+   <h3 class="widget-title" style="background: #f8f8f8;height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;"><i class="iconfont icon-viewgrid"></i><a href="{$=ii_get_actual_route('{$genre}')}">{$=ii_itake('global.{$genre}:module.channel_title', 'lng')}</a></h3>
+   <div class="post_cat">
+    <ul>
+       {@}<li class="cat-title"><i class="iconfont icon-chevronright"></i><a href="{$=ii_get_actual_route('{$genre}')}/?type=detail&id={$id}">{$topic}</a></li>{@}
+    </ul>
+    <div class="clear"></div>
+   </div>
+   <div class="clear"></div>
+  </aside>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-search]]></name>
+      <tpl_default><![CDATA[      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="feed-link motion-element">
+          <a><i class="fa fa-cube"></i>热门搜索</a>
+        </div>
+        <div class="links-of-search motion-element">
+          {$=search_data_view_all(35)}
+        </div>
+      </section>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-sort]]></name>
+      <tpl_default><![CDATA[  <aside id="categories-4" class="widget widget_categories">
+   <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>{$=ii_itake('global.lng_config.sort','lng')}</h3>
+   <ul>
+    {$=vv_isort('article', 'tpl=sidebar-sort')}
+   </ul>
+   <div class="clear"></div>
+  </aside>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-new]]></name>
+      <tpl_default><![CDATA[      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="feed-link motion-element">
+          <a><i class="fa fa-cube"></i>最新文章</a>
+        </div>
+        <div class="links-of-author motion-element">
+          {$=vv_itransfer('new', 'sidebar-list-new', 'topx=10;tnum=30;genre=article')}
+        </div>
+      </section>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-hot]]></name>
+      <tpl_default><![CDATA[      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="feed-link motion-element">
+          <a><i class="fa fa-cube"></i>热门文章</a>
+        </div>
+        <div class="links-of-author motion-element">
+          {$=vv_itransfer('hot', 'sidebar-list-hot', 'topx=10;tnum=30;genre=article')}
+        </div>
+      </section>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-tag]]></name>
+      <tpl_default><![CDATA[  <aside id="tag_cloud-2" class="widget tag_cloud">
+   <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>热门标签</h3>
+   <div class="tagcloud"> 
+    {$=api_tags_all('30')}
+    <div class="clear"></div>
+   </div>
+   <div class="clear"></div>
+  </aside>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[sidebar-roll]]></name>
+      <tpl_default><![CDATA[  <div class="sidebar-roll">
+   <aside id="custom_html-2" class="widget_text widget widget_custom_html">
+    <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>赞助商</h3>
+    <div class="textwidget custom-html-widget">
+     {$=ii_itake('global.support/themes/{$nskin}:extend.ad-sidebar','lng')}
+    </div>
+    <div class="clear"></div>
+   </aside>
+  </div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-index]]></name>
+      <tpl_default><![CDATA[<div class="ad-site">
+  <div class="ad-archive-p">
+    {$=ii_itake('global.support/themes/{$nskin}:extend.ad-index','lng')}
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-list]]></name>
+      <tpl_default><![CDATA[<div class="ad-site">
+  <div class="ad-archive-p">
+{$=ii_itake('global.support/themes/{$nskin}:extend.ad-list','lng')}
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-detail]]></name>
+      <tpl_default><![CDATA[<div class="ad-site">
+  <div class="ad-single-p">
+{$=ii_itake('global.support/themes/{$nskin}:extend.ad-detail','lng')}
+  </div>
+</div>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[ad-sidebar]]></name>
+      <tpl_default><![CDATA[    <div class="sidebar-inner">
+      {$=ii_itake('global.support/themes/{$nskin}:extend.ad-sidebar','lng')}
+    </div>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

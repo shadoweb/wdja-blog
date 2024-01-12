@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[add]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+{$=mm_echo_error()}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('config.sign','lng')}</div>
+            <div class="post-title">
+              <h2>
+                <span><a href="./?type=add">{$=ii_itake('config.sign','lng')}</a></span>
+                <span><a href="./?type=list">{$=ii_itake('config.view','lng')}</a></span>
+              </h2>
+            </div>
+            <main id="main" role="main">
+              <div id="comments" class="comments-area">
+                <div id="respond" class="comment-respond">
+                  <h3 id="reply-title" class="comment-reply-title">{$=ii_itake('config.sign','lng')}</h3>
+                  <div id="comment-author-info">
+                    <form method="post" action="{$=#nuri}?action=add&token={$=mm_get_token()}" onSubmit="return Validator.Validate(this, 2)">
+                      <input type="hidden" name="token" value="{$=mm_get_token()}" />
+                      <input type="hidden" name="hidden" value="1" />
+                      <table width="100%" cellspacing="0" cellpadding="10" border="0" class="nocolor">
+                        <tbody>
+                          <tr>
+                            <td width="70" height="25" align="right">{$=ii_itake('config.name', 'lng')}</td>
+                            <td><input type="text" size="20" name="name" maxlength="16" dtype="Limit" min="1" max="16" dmsg="{$=ii_itake('validator.name', 'lng')}" value="{$=ii_htmlencode($_POST['name'], 1)}" style="width:80%;max-width:350px;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.mobile', 'lng')}</td>
+                            <td><input type="text" size="20" name="mobile" dtype="Mobile" dmsg="{$=ii_itake('validator.mobile', 'lng')}" value="{$=ii_htmlencode($_POST['mobile'], 1)}" style="width:80%;max-width:350px;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.address', 'lng')}</td>
+                            <td><input type="text" size="20" name="url" value="{$=ii_htmlencode($_POST['address'], 1)}" style="width:80%;max-width:350px;" class="i1" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.title', 'lng')}</td>
+                            <td><input type="text" size="20" name="title" value="{$=ii_htmlencode($_POST['title'], 1)}" style="width:80%;max-width:350px;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right" valign="top" style="vertical-align: top;">{$=ii_itake('config.content', 'lng')}</td>
+                            <td><textarea id="comment" rows="4" name="content" dtype="Limit" min="1" max="1000" dmsg="{$=ii_itake('validator.content', 'lng')}" style="width:80%;max-width:350px;" class="textarea">{$=ii_htmlencode($_POST['content'], 1)}</textarea></td>
+                          </tr>{@recurrence_valcode}
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.valcode', 'lng')}</td>
+                            <td><input type="text" name="valcode" size="4" dtype="Require" dmsg="{$=ii_itake('validator.valcode', 'lng')}" style="width:80%;max-width:150px;display:inline-block;vertical-align: middle;" class="commenttext" value="{$=ii_htmlencode($_POST['valcode'], 1)}" /> <span style="display:inline-block;vertical-align: middle;">{$=mm_valcode()}</span></td>
+                          </tr>{@recurrence_valcode}
+                          <tr>
+                            <td height="25" align="right"></td>
+                            <td><input id="submit" name="submit" type="submit" tabindex="5" value="{$=ii_itake('global.lng_config.submit','lng')}" /> <input id="reset" name="reset" type="reset" tabindex="6" value="{$=ii_itake('global.lng_config.reset','lng')}" /></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+
+              </div>
+            </main>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}{$=NAV_SP_STR}{$=ii_itake('config.view','lng')}</div>
+            <div class="post-title">
+              <h2>
+     			    <span><a href="./?type=add">{$=ii_itake('config.sign','lng')}</a></span>
+    			    <span><a href="./?type=list">{$=ii_itake('config.view','lng')}</a></span>
+              </h2>
+            </div>
+            {$=mm_get_advert('list')}
+            <main id="main" role="main">
+              <div id="comments" class="comments-area">
+                <ol class="comment-list">
+                  {@recurrence_ida}
+                  <li class="comment">
+                    <div class="comment-body">
+                      <div class="comment-author vcard"> 
+                        <strong> {$name} </strong> 
+                        <span class="comment-meta commentmetadata"> <span class="comment-aux"> <span class="reply"></span> <i class="iconfont icon-calendarplus"></i>{$time} </span> </span>
+                      </div>
+                      <p>{$=ii_creplace(ii_encode_article(ii_htmlencode($GLOBALS['RS_content'])))}</p>
+                    </div>
+                    {@admin_reply}
+                    <ul class="children">
+                      <li class="comment">
+                        <div class="comment-body">
+                          <div class="comment-author vcard">
+                            <strong>{$=ii_itake('config.reply', 'lng')}:</strong> 
+                            <span class="comment-meta commentmetadata"> <span class="comment-aux">  {$replytime} </span> </span>
+                          </div>
+                          <p>{$=ii_creplace(ii_encode_article(ii_htmlencode($GLOBALS['RS_reply'])))}</p>
+                        </div></li>
+                    </ul>
+                    {@admin_reply}
+                  </li>
+                  {@recurrence_ida}
+                </ol>
+
+                <nav class="navigation pagination">
+                  <div class="nav-links">
+                    {$cpagestr}
+                  </div>
+                </nav>
+
+                <div class="clear"></div>
+              </div>
+
+            </main>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+{$=mm_echo_error()}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation($GLOBALS['ngenre'], 'classid=-1;strers=module;strurl=' . $GLOBALS['ngenre'])}</div>
+            <div class="post-title">
+              <h2>
+                <span><a href="./?type=add">{$=ii_itake('config.sign','lng')}</a></span>
+                <span><a href="./?type=list">{$=ii_itake('config.view','lng')}</a></span>
+              </h2>
+            </div>
+            <main id="main" role="main">
+              <div id="comments" class="comments-area">
+                <div id="respond" class="comment-respond">
+                  <h3 id="reply-title" class="comment-reply-title">{$=ii_itake('module.channel_title','lng')}</h3>
+                  <div id="comment-author-info">
+                    <form method="post" action="{$=#nuri}?action=add&token={$=mm_get_token()}" onSubmit="return Validator.Validate(this, 2)">
+                      <input type="hidden" name="token" value="{$=mm_get_token()}" />
+                      <input type="hidden" name="hidden" value="1" />
+                      <table width="100%" cellspacing="0" cellpadding="10" border="0" class="nocolor">
+                        <tbody>
+                          <tr>
+                            <td width="70" height="25" align="right">{$=ii_itake('config.name', 'lng')}</td>
+                            <td><input type="text" size="20" name="name" maxlength="16" dtype="Limit" min="1" max="16" dmsg="{$=ii_itake('validator.name', 'lng')}" value="{$=ii_htmlencode($_POST['name'], 1)}" style="width:80%;max-width:350px;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.mobile', 'lng')}</td>
+                            <td><input type="text" size="20" name="mobile" dtype="Mobile" dmsg="{$=ii_itake('validator.mobile', 'lng')}" value="{$=ii_htmlencode($_POST['mobile'], 1)}" style="width:80%;max-width:350px;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.address', 'lng')}</td>
+                            <td><input type="text" size="20" name="url" value="{$=ii_htmlencode($_POST['address'], 1)}" style="width:80%;max-width:350px;" class="i1" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.title', 'lng')}</td>
+                            <td><input type="text" size="20" name="title" value="{$=ii_htmlencode($_POST['title'], 1)}" style="width:80%;max-width:350px;" class="commenttext" /></td>
+                          </tr>
+                          <tr>
+                            <td height="25" align="right" valign="top" style="vertical-align: top;">{$=ii_itake('config.content', 'lng')}</td>
+                            <td><textarea id="comment" rows="4" name="content" dtype="Limit" min="1" max="1000" dmsg="{$=ii_itake('validator.content', 'lng')}" style="width:80%;max-width:350px;" class="textarea">{$=ii_htmlencode($_POST['content'], 1)}</textarea></td>
+                          </tr>{@recurrence_valcode}
+                          <tr>
+                            <td height="25" align="right">{$=ii_itake('config.valcode', 'lng')}</td>
+                            <td><input type="text" name="valcode" size="4" dtype="Require" dmsg="{$=ii_itake('validator.valcode', 'lng')}" style="width:80%;max-width:150px;display:inline-block;vertical-align: middle;" class="commenttext" value="{$=ii_htmlencode($_POST['valcode'], 1)}" /> <span style="display:inline-block;vertical-align: middle;">{$=mm_valcode()}</span></td>
+                          </tr>{@recurrence_valcode}
+                          <tr>
+                            <td height="25" align="right"></td>
+                            <td><input id="submit" name="submit" type="submit" tabindex="5" value="{$=ii_itake('global.lng_config.submit','lng')}" /> <input id="reset" name="reset" type="reset" tabindex="6" value="{$=ii_itake('global.lng_config.reset','lng')}" /></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+
+              </div>
+            </main>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

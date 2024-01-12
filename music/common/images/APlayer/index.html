@@ -1,0 +1,19 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Aplayer网页音乐播放器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="APlayer.min.css">
+</head>
+<body>
+    <div id="aplayer" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;"></div>
+    <script src="APlayer.min.js"></script>
+    <script>
+      var options = {"narrow":false,"autoplay":true,"showlrc":3,"mini":false,"loop":"all","order":"random","mutex":true,"theme":"#fa3c33","preload":"metadata","listmaxheight":"640px","width":"50%","music":[{"title":"我们","author":"陈奕迅","url":"/陈奕迅/我们 - 陈奕迅.mp3","pic":"/陈奕迅/poster.jpg","lrc":"/lrc/陈奕迅/我们 - 陈奕迅.lrc"},{"title":"孤独患者","author":"陈奕迅","url":"/陈奕迅/孤独患者 - 陈奕迅.mp3","pic":"/陈奕迅/poster.jpg","lrc":"/lrc/陈奕迅/孤独患者 - 陈奕迅.lrc"},{"title":"身骑白马","author":"徐佳莹","url":"https://brywmzl.mybluemix.net/Music/CloudMusic/徐佳莹/身骑白马 - 徐佳莹.mp3","pic":"/徐佳莹/poster.jpg","lrc":"/lrc/徐佳莹/身骑白马 - 徐佳莹.lrc"},{"title":"失落沙洲","author":"徐佳莹","url":"/徐佳莹/失落沙洲 - 徐佳莹.mp3","pic":"/徐佳莹/poster.jpg","lrc":"/lrc/徐佳莹/失落沙洲 - 徐佳莹.lrc"}]};
+      options.element = document.getElementById("aplayer");
+      var ap = new APlayer(options);
+      window.aplayers || (window.aplayers = []);
+      window.aplayers.push(ap);
+    </script>
+</body>
+</html>

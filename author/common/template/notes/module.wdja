@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <div id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</div>
+            {$=mm_get_advert('list')}
+            <div class="tag-cloud">
+              <div class="tag-cloud-title"> {$=ii_itake('module.channel_title','lng')}</div>
+              <div class="tag-cloud-tags">
+                {@recurrence_ida}
+                <a style="width:auto;" href="{$url}" >{$topic}</a>
+                {@recurrence_ida}
+              </div>
+            </div>
+          </div>
+          <nav class="pagination">
+            {$cpagestr}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</div>
+            <article class="post post-type-normal" style="opacity: 1; display: block; transform: translateY(0px);">
+              <header class="post-header">
+                <img style="width:150px;" src="{$image}">
+                <h1 class="post-title">{$topic}</h1>
+              </header>
+              <div class="post-body">
+                {$=mm_get_advert('detail')}
+                {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+                <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+              </div>
+            </article>
+            {$=api_author_genre_lists()}
+            <div class="clear"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[api_author_genre_list]]></name>
+      <tpl_default><![CDATA[<aside class="sidebar-inner" style="width:100%;">
+  <section class="site-overview sidebar-panel sidebar-panel-active">
+    <div class="feed-link motion-element">
+      <a href="{$=ii_get_actual_route('{$genre}')}/{$=ii_iurl('list',0, $GLOBALS['nurltype'])}&author={$id}"><i class="fa fa-cube"></i>{$=ii_itake('global.{$genre}:module.channel_title', 'lng')}</a>
+    </div>
+    <ul class="links-of-author motion-element">
+      {@}<li class="cat-title"><a href="{$=#nurlpre}/{$genre}/{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}"><i class="fa fa-fw fa-circle-o"></i>{$topic}</a></li>{@}
+    </ul>
+  </section>
+</aside>
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

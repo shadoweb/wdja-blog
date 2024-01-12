@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[list]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-collapse">
+            <div class="post-copyright">{$=vv_inavigation('{$genre}', 'classid={$classid};strers=module;strurl={$genre}')}</div>
+            <div class="collection-title">
+              <h2><small>{$=ii_itake('global.lng_config.sort','lng')}</small>《{$=mm_get_sorttext('{$genre}','{$nlng}','{$classid}')}》</h2>
+            </div>
+            <div>
+              {$=api_list_form('{$classid}','{$offset}')}
+            </div>
+            {$=mm_get_advert('list')}
+            {@recurrence_ida}
+            <article class="post post-type-normal" style="opacity: 1; display: block; transform: translateY(0px);">
+              <header class="post-header">
+                <h1 class="post-title"><a class="post-title-link" href="{$=ii_iurl('detail', {$id}, $GLOBALS['nurltype'])}"><span>{$topic}</span></a></h1>
+                <div class="post-meta"><time class="post-time">{$=ii_format_date('{$time}',1)}</time></div>
+              </header>
+            </article>
+            {@recurrence_ida}
+          </section>
+          <nav class="pagination">
+            {$cpagestr}
+          </nav>      
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation('{$genre}', 'classid={$class};strers=module;strurl={$genre}')}</div>
+            <article class="post post-type-normal" style="opacity: 1; display: block; transform: translateY(0px);">
+              <header class="post-header">
+                <h1 class="post-title">{$topic}</h1>
+                <div class="post-meta">
+                  <span class="post-time">
+                    <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
+                    <span class="post-meta-item-text">发表于</span><time>{$=ii_format_date('{$time}',1)}</time>
+                  </span>
+                  <span class="leancloud_visitors" data-flag-title="NexT Documentations Reload">
+                    <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon"><i class="fa fa-eye"></i></span>
+                    <span class="post-meta-item-text">{$=ii_itake('global.lng_config.count','lng')}</span>
+                    <span class="leancloud-visitors-count">{$count}</span>
+                  </span>
+                </div>
+              </header>
+              <div class="post-body">
+               <img id="flash" src="{$=ii_rebuild_txtimg('{$topic}','{$id}')}"/>
+                {$=mm_get_advert('detail')}
+                {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+                <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+                {$=mm_get_author('{$auid}','{$id}')}
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">{$=api_tags_list({$id})}</div>
+                <div class="post-nav">
+                  <div class="post-nav-next post-nav-item">
+                    {$=vv_itransfer('up', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+                  </div>
+                  <span class="post-nav-divider"></span>
+                  <div class="post-nav-prev post-nav-item">
+                    {$=vv_itransfer('down', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+                  </div>
+                </div>
+              </footer>
+            </article>
+            {$=mm_view_pop_lists('picture','{$id}')}
+
+            {$=vv_itransfer('new', 'global.article:module.detail_list_class', 'topx=10;tnum=30;genre=article;osql= and #_class=\'{$class}\'')}
+
+            {$=vv_itransfer('new', 'global.article:module.detail_list_more', 'topx=10;tnum=30;genre=article;')}
+            <div class="clear"></div>
+            {$=mm_get_detail_check('{$genre}','{$id}','{$url}')}
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail_list_class]]></name>
+      <tpl_default><![CDATA[<aside class="sidebar-inner" style="width:48%;float:left;">
+  <section class="site-overview sidebar-panel sidebar-panel-active">
+    <div class="feed-link motion-element">
+      <a><i class="fa fa-cube"></i>相关文章</a>
+    </div>
+    <ul class="links-of-author motion-element">
+      {@}<li class="cat-title"><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, $GLOBALS['nurltype']))}"><i class="fa fa-fw fa-circle-o"></i>{$topic}</a></li>{@}
+    </ul>
+  </section>
+</aside>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail_list_more]]></name>
+      <tpl_default><![CDATA[<aside class="sidebar-inner" style="width:48%;float:right;">
+  <section class="site-overview sidebar-panel sidebar-panel-active">
+    <div class="feed-link motion-element">
+      <a><i class="fa fa-cube"></i>更多文章</a>
+    </div>
+    <ul class="links-of-author motion-element">
+      {@}<li class="cat-title"><a href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, $GLOBALS['nurltype']))}"><i class="fa fa-fw fa-circle-o"></i>{$topic}</a></li>{@}
+    </ul>
+  </section>
+</aside>
+]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[nodetail]]></name>
+      <tpl_default><![CDATA[{$=mm_web_head($GLOBALS['nhead'])}
+<div class="container sidebar-position-left page-home">
+  <div class="headband"></div>
+  <main id="main" class="main">
+    {$=ii_ireplace('global.module.sidebar','tpl')}
+    <div class="main-inner">
+      <div class="content-wrap">
+        <div id="content" class="content">
+          <section id="posts" class="posts-expand">
+            <div class="post-copyright">{$=vv_inavigation('{$genre}', 'classid={$class};strers=module;strurl={$genre}')}</div>
+            <article class="post post-type-normal" style="opacity: 1; display: block; transform: translateY(0px);">
+              <header class="post-header">
+                <h1 class="post-title">{$topic}</h1>
+                <div class="post-meta">
+                  <span class="post-time">
+                    <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
+                    <span class="post-meta-item-text">发表于</span><time>{$=ii_format_date('{$time}',1)}</time>
+                  </span>
+                  <span class="leancloud_visitors" data-flag-title="NexT Documentations Reload">
+                    <span class="post-meta-divider">|</span>
+                    <span class="post-meta-item-icon"><i class="fa fa-eye"></i></span>
+                    <span class="post-meta-item-text">{$=ii_itake('global.lng_config.count','lng')}</span>
+                    <span class="leancloud-visitors-count">{$count}</span>
+                  </span>
+                </div>
+              </header>
+              <div class="post-body">
+                {$=mm_get_advert('detail')}
+                {$=ii_itake('global.lng_public.nodetail', 'lng')}[{$=ap_get_userGroup('{$utid}')}]
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">{$=mm_get_author('{$aid}','{$id}')}</div>
+                <div class="post-nav">
+                  <div class="post-nav-next post-nav-item">
+                    {$=vv_itransfer('up', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+                  </div>
+                  <span class="post-nav-divider"></span>
+                  <div class="post-nav-prev post-nav-item">
+                    {$=vv_itransfer('down', 'updown', 'topx=1;genre={$genre};bid={$id}')}
+
+                  </div>
+                </div>
+              </footer>
+            </article>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  {$=mm_web_foot($GLOBALS['nfoot'])}
+]]></tpl_default>
+    </item>
+  </item_list>
+</xml>

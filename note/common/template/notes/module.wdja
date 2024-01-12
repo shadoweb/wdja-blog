@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml mode="wdja" author="wdja">
+  <configure>
+    <node>item</node>
+    <field>name,tpl_default</field>
+    <base>item_list</base>
+  </configure>
+  <item_list>
+    <item>
+      <name><![CDATA[detail]]></name>
+      <tpl_default><![CDATA[<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link href="{$=#nurlpre}/{$genre}/common/images/fullcalenda/lib/main.min.css" rel='stylesheet' />
+    <title>{$=mm_web_title($GLOBALS['ntitle'])}</title>
+    <meta name="keywords" content="{$=mm_web_keywords($GLOBALS['nkeywords'])}" />
+    <meta name="description" content="{$=mm_web_description($GLOBALS['ndescription'])}" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 14px;
+      }
+      #calendar {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 10px;
+      }
+      a{
+        text-decoration: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calendar" class="fc fc-media-screen fc-direction-ltr fc-theme-standard">
+      <div class="fc-header-toolbar fc-toolbar fc-toolbar-ltr">
+        <div class="fc-toolbar-chunk">
+          <div class="fc-button-group"><a href="/note" class="fc-today-button fc-button fc-button-primary"><span class="fc-icon fc-icon-chevron-left"></span></a></div>
+        </div>
+        <div class="fc-toolbar-chunk"><h2 class="fc-toolbar-title" id="fc-dom-1">{$topic}</h2>
+        </div>
+        <div class="fc-toolbar-chunk">
+          <div class="fc-button-group"  class="fc-today-button fc-button fc-button-primary"><code>{$=vv_inavigation('{$genre}', 'strers=module;strurl={$genre}')}</code></div>
+        </div>
+      </div>
+      <div aria-labelledby="fc-dom-1" class="fc-view-harness fc-view-harness-active" style="height: 800px;">
+        <div class="fc-list  fc-list-sticky fc-listMonth-view fc-view" >
+          <div class="fc-scroller fc-scroller-liquid" style="overflow: hidden auto;">
+            <table role="grid" class="fc-list-table">
+              <tr class="fc-list-event fc-event fc-event-start fc-event-past">
+                <td class="fc-list-event-graphic"><span class="fc-list-event-dot"></span></td>
+                <td class="fc-list-event-time">{$=ii_format_date('{$start}',6)} {$=ii_format_date('{$start}',23)}</td>
+                <td class="fc-list-event-time">{$=ii_format_date('{$end}',6)} {$=ii_format_date('{$end}',23)}</td>
+                <td class="fc-list-event-title">{$topic}</td>
+              </tr>
+              <tr class="fc-list-day fc-day fc-day-wed fc-day-past">
+                <td colspan="4" class="fc-list-event-title">
+                  {$=mm_encode_content(mm_cutepage_content(api_tags_replace_tags($GLOBALS['RS_content'])))}
+                  <div id="ct-cutepage" class="cutepage">{$=mm_cutepage_content_page_sel($GLOBALS['RS_content'], '{$id}')}</div>
+                  <p>&nbsp;</p>
+                </td>
+              </tr>
+            </table>
+            <table role="grid" class="fc-list-table">
+              {$=vv_itransfer('new', 'global.note:module.detail-list', 'topx=10;tnum=30;genre=note;osql= and #id!= \'{$id}\' and #_lng=\'' . $GLOBALS['nlng'] . '\'')}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[detail-list]]></name>
+      <tpl_default><![CDATA[<tr class="fc-list-day fc-day fc-day-fri fc-day-past">
+  <th scope="colgroup" colspan="4" id="fc-dom-104-2020-09-11" aria-labelledby="fc-dom-108">
+    <div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text" >更多内容</a></div>
+  </th>
+</tr>
+{@}
+<tr class="fc-list-event  fc-event fc-event-start fc-event-past">
+  <td class="fc-list-event-graphic"><span class="fc-list-event-dot"></span></td>
+  <td class="fc-list-event-time">{$=ii_format_date('{$start}',6)} {$=ii_format_date('{$start}',23)}</td>
+  <td class="fc-list-event-title"><a  href="{$=ii_curl('{$baseurl}', ii_iurl('detail', {$id}, $GLOBALS['nurltype']))}">{$topic}</a></td>
+  <td class="fc-list-event-time"></td>
+</tr>
+{@}]]></tpl_default>
+    </item>
+    <item>
+      <name><![CDATA[index]]></name>
+      <tpl_default><![CDATA[<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link href="{$=#nurlpre}/{$genre}/common/images/fullcalenda/lib/main.min.css" rel='stylesheet' />
+    <script src="{$=#nurlpre}/{$genre}/common/images/fullcalenda/lib/main.min.js"></script>
+    <script src="{$=#nurlpre}/{$genre}/common/images/fullcalenda/lib/zh-cn.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          height: '100%',
+          headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'today,dayGridMonth,timeGridWeek,listMonth'
+          },
+          initialView: 'dayGridMonth',//默认显示形式，dayGridMonth,timeGridWeek,timeGridDay,listWeek,listMonth
+          slotMinTime: '06:00',//周历和日历显示时间范围
+          slotMaxTime: '22:00',//周历和日历显示时间范围
+          selectable: true,
+          nowIndicator: true,
+          expandRows: true,
+          initialDate: "{$=ii_format_date('{$now}',1)}",
+          locale: 'zh-cn',
+          timeZone: 'Asia/Shanghai',
+          buttonIcons: true, // show the prev/next text
+          weekNumbers: false,
+          editable: true,
+          navLinks: true, // can click day/week names to navigate views
+          dayMaxEvents: true, // allow "more" link when too many events
+          events: {
+            url: '{$=#nurlpre}/{$genre}/get-events.php',
+            failure: function() {
+              //document.getElementById('script-warning').style.display = 'block'
+            }
+          },
+          loading: function(bool) {
+            document.getElementById('loading').style.display =
+              bool ? 'block' : 'none';
+          }
+        });
+        calendar.render();
+        calendar.setOption('locale', 'zh-cn');
+        calendar.setOption('timeZone', 'Asia/Shanghai');
+      });
+    </script>
+    <style>
+  html, body {
+    overflow: hidden; /* don't do scrollbars */
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+  #calendar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .fc-header-toolbar {
+    /*
+    the calendar will be butting up against the edges,
+    but let's scoot in the header's buttons
+    */
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+      #loading {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='loading'>loading...</div>
+    <div id='calendar-container'>
+      <div id='calendar'></div>
+    </div>
+  </body>
+</html>]]></tpl_default>
+    </item>
+  </item_list>
+</xml>
