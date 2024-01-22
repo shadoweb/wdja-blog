@@ -269,6 +269,12 @@ CREATE TABLE `wdja_expansion_timer` (
 CREATE TABLE `wdja_author` (
   `aid` int NOT NULL AUTO_INCREMENT,
   `a_topic` varchar(50) DEFAULT NULL,
+  `a_titles` varchar(250) DEFAULT NULL,
+  `a_keywords` varchar(252) DEFAULT NULL,
+  `a_description` varchar(252) DEFAULT NULL,
+  `a_image` varchar(255) DEFAULT NULL,
+  `a_content` text,
+  `a_content_atts_list` text,
   `a_time` datetime DEFAULT '2021-08-01 08:00:00',
   `a_update` datetime DEFAULT '2021-08-01 08:00:00',
   `a_count` int DEFAULT '0',
@@ -276,7 +282,7 @@ CREATE TABLE `wdja_author` (
   PRIMARY KEY (`aid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS `wdja_idea` (
+CREATE TABLE `wdja_idea` (
   `iid` int(11) NOT NULL,
   `i_ip` varchar(50) DEFAULT NULL,
   `i_title` varchar(252) DEFAULT NULL,
